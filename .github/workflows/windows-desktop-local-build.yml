@@ -1,0 +1,65 @@
+name: Windows Desktop local build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/desktop/**"
+      - "frontend/**"
+      - "scripts/build_desktop_windows_local.ps1"
+      - "scripts/prepare_desktop_bundle.ps1"
+      - ".github/workflows/windows-desktop-local-build.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-desktop-local-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-windows-x64:
+    runs-on: windows-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Select stable Rust
+        shell: pwsh
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup default stable
+          rustc --version
+          cargo --version
+          node --version
+          npm --version
+
+      - name: Build Windows Desktop installer
+        shell: pwsh
+        run: .\scripts\build_desktop_windows_local.ps1
+
+      - name: List build outputs
+        shell: pwsh
+        run: Get-ChildItem -LiteralPath target\desktop-local-dist -File | Format-Table Name, Length
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: webcodex-desktop-windows-x64-local
+          path: |
+            target/desktop-local-dist/*-setup.exe
+            target/desktop-local-dist/*.sha256
+          if-no-files-found: error
+          retention-days: 14
