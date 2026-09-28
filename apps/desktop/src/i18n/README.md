@@ -3,7 +3,9 @@
 Each file in `messages/` is a complete language catalog. `locale.tsx` derives the
 message-key type from `zh-CN.json` and requires every registered catalog to supply
 all keys. `LANGUAGES` is the single list used by both language selectors; labels
-use the language's own name.
+use the language's own name. Simplified Chinese (`zh-CN`) and Traditional Chinese
+for Taiwan (`zh-TW`) are maintained as separate complete catalogs so Taiwan-specific
+terminology can differ instead of relying on runtime character conversion.
 
 To add a language, add its JSON catalog, import and register it in `locale.tsx`,
 and add its locale code and native name to `LANGUAGES`. Preserve `{{name}}`
