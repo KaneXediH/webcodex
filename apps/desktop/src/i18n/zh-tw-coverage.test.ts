@@ -31,6 +31,7 @@ describe("Traditional Chinese coverage", () => {
   it("does not fall back to English for zh-TW product and tool surfaces", () => {
     expect(productText("zh-TW", "projects")).toBe("專案");
     expect(productText("zh-TW", "fileAccess")).toBe("檔案存取");
+    expect(productText("zh-TW", "skills")).toBe("技能");
     expect(connectionsToolsText("zh-TW", "addConnection")).toBe("新增連線");
     expect(runnerCapabilitiesText("zh-TW", "authorize")).toBe("授權 Runner 能力");
     expect(shellText("zh-TW", "Documentation")).toBe("說明文件");
