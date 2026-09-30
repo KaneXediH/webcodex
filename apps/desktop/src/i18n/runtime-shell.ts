@@ -188,7 +188,10 @@ const serviceText: Record<string, Record<string, string>> = {
   },
 };
 export type ShellText = (text: string) => string;
+export function shellText(locale: string, text: string): string {
+  return locale === "zh-CN" ? zh[text] ?? text : locale === "zh-TW" ? zhTW[text] ?? text : serviceText[locale]?.[text] ?? text;
+}
 export function useShellText(): ShellText {
   const { locale } = useLocale();
-  return (text) => locale === "zh-CN" ? zh[text] ?? text : locale === "zh-TW" ? zhTW[text] ?? text : serviceText[locale]?.[text] ?? text;
+  return (text) => shellText(locale, text);
 }
