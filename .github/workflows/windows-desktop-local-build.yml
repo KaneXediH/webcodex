@@ -32,7 +32,7 @@ jobs:
           persist-credentials: false
 
       - name: Use Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: "22"
 
@@ -55,7 +55,7 @@ jobs:
         run: Get-ChildItem -LiteralPath target\desktop-local-dist -File | Format-Table Name, Length
 
       - name: Upload installer artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: webcodex-desktop-windows-x64-local
           path: |
