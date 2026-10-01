@@ -91,7 +91,7 @@ export function ExtensionsPanel({ state, onState }: { state: DesktopState; onSta
       {TABS.map(value => <button type="button" role="tab" key={value} id={`extension-tab-${value}`} aria-controls={`extension-view-${value}`} aria-selected={tab === value} tabIndex={tab === value ? 0 : -1} onClick={() => setTab(value)} onKeyDown={event => {
         if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
         event.preventDefault(); const next = TABS[(TABS.indexOf(value) + (event.key === "ArrowRight" ? 1 : TABS.length - 1)) % TABS.length]; setTab(next); window.document.getElementById(`extension-tab-${next}`)?.focus();
-      }}>{value === "instructions" ? p("instructions") : value === "skills" ? "Skills" : value === "mcpProviders" ? c("mcpProviders") : r(value)}</button>)}
+      }}>{value === "instructions" ? p("instructions") : value === "skills" ? p("skills") : value === "mcpProviders" ? c("mcpProviders") : r(value)}</button>)}
     </div>
     <ManagedInstructionsPanel active={tab === "instructions"} settings={settings} disabled={disabled} onState={onState} onEnabled={refresh} />
     {pathsApplied && projectTab && <p className="extension-apply-bar" role="status">{instructionsText("pathsApplied")}</p>}
