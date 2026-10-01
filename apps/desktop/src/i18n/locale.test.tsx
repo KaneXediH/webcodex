@@ -34,13 +34,13 @@ describe("LocaleProvider", () => {
     function TextProbe() {
       const { t } = useLocale(); const p = useProduct(); const c = useConnectionsTools();
       const i = useInstructionsText(); const s = useShellText();
-      return <p>{[t("nav.settings"), p("overview"), c("autostart"), i("save"), s("Check connection")].join(" · ")}</p>;
+      return <p>{[t("nav.settings"), p("fileAccess"), c("autostart"), i("save"), s("Check connection")].join(" · ")}</p>;
     }
     window.localStorage.setItem(LOCALE_STORAGE_KEY, "zh-TW");
     render(<LocaleProvider><LocaleProbe /><TextProbe /></LocaleProvider>);
     expect(screen.getByRole("combobox")).toHaveValue("zh-TW");
     expect(screen.getByRole("option", { name: "繁體中文" })).toBeInTheDocument();
-    expect(screen.getByText("設定 · 工作概覽 · 自動啟動 · 儲存指令 · 檢查連線")).toBeInTheDocument();
+    expect(screen.getByText("設定 · 檔案存取 · 自動啟動 · 儲存指令 · 檢查連線")).toBeInTheDocument();
   });
   it.each(LANGUAGES)("persists and restores $value", async ({ value }) => {
     const first = render(<LocaleProvider><LocaleProbe /></LocaleProvider>);
