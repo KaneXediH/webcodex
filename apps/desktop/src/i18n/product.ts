@@ -116,6 +116,7 @@ export const PRODUCT_MESSAGES = {
   search: ["Search projects", "搜索项目", "Projekte suchen", "Rechercher des projets", "プロジェクトを検索", "프로젝트 검색", "搜尋專案"],
   noMatches: ["No matching projects", "没有匹配的项目", "Keine passenden Projekte", "Aucun projet correspondant", "該当するプロジェクトはありません", "일치하는 프로젝트 없음", "沒有匹配的專案"],
   instructions: ["Instructions", "指令", "Anweisungen", "Instructions", "指示", "지침", "指令"],
+  skills: ["Skills", "技能", "Skills", "Compétences", "スキル", "스킬", "技能"],
   globalInstructions: ["Global instructions", "全局指令", "Globale Anweisungen", "Instructions globales", "グローバル指示", "전역 지침", "全域指令"],
   available: ["Available", "可用", "Verfügbar", "Disponible", "利用可能", "사용 가능", "可用"],
   manage: ["Manage", "管理", "Verwalten", "Gérer", "管理", "관리", "管理"],
