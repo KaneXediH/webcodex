@@ -3,13 +3,13 @@ import { useLocale } from "./locale";
 // Product vocabulary is grouped by task rather than by implementation module.
 // Column order: English, Simplified Chinese, German, French, Japanese, Korean, Traditional Chinese.
 export const PRODUCT_MESSAGES = {
-  authorizedRunners: ["Authorized Runners", "获授权的 Runner", "Autorisierte Runner", "Runners autorisés", "許可された Runner", "권한이 있는 Runner", "获授权的 Runner"],
+  authorizedRunners: ["Authorized Runners", "获授权的 Runner", "Autorisierte Runner", "Runners autorisés", "許可された Runner", "권한이 있는 Runner", "獲授權的 Runner"],
   thisComputer: ["This computer", "此电脑", "Dieser Computer", "Cet ordinateur", "このコンピューター", "이 컴퓨터", "此電腦"],
   online: ["Online", "在线", "Online", "En ligne", "オンライン", "온라인", "線上"],
   offline: ["Offline", "离线", "Offline", "Hors ligne", "オフライン", "오프라인", "離線"],
   staleData: ["Status is stale", "状态已过期", "Status veraltet", "État périmé", "状態が古くなっています", "오래된 상태", "狀態已過期"],
-  guiAvailable: ["GUI session available", "GUI 会话可用", "GUI-Sitzung verfügbar", "Session graphique disponible", "GUI セッションを利用可能", "GUI 세션 사용 가능", "GUI 会话可用"],
-  guiUnavailable: ["GUI session unavailable", "GUI 会话不可用", "GUI-Sitzung nicht verfügbar", "Session graphique indisponible", "GUI セッションを利用不可", "GUI 세션 사용 불가", "GUI 会话不可用"],
+  guiAvailable: ["GUI session available", "GUI 会话可用", "GUI-Sitzung verfügbar", "Session graphique disponible", "GUI セッションを利用可能", "GUI 세션 사용 가능", "GUI 工作階段可用"],
+  guiUnavailable: ["GUI session unavailable", "GUI 会话不可用", "GUI-Sitzung nicht verfügbar", "Session graphique indisponible", "GUI セッションを利用不可", "GUI 세션 사용 불가", "GUI 工作階段不可用"],
   unregisterProject: ["Unregister project", "取消注册", "Registrierung entfernen", "Désinscrire le projet", "登録を解除", "등록 해제", "取消註冊"],
   unregisterDescription: ["Only the project registration is removed. Your folder and Git files are kept. Active jobs may prevent removal.", "只取消项目注册，保留文件夹与 Git 文件。有运行中的任务时可能无法取消注册。", "Nur die Registrierung wird entfernt. Ordner und Git-Dateien bleiben erhalten. Aktive Jobs können dies verhindern.", "Seule l’inscription est supprimée. Le dossier et Git sont conservés. Des tâches actives peuvent bloquer l’opération.", "登録のみ解除します。フォルダーと Git ファイルは保持されます。実行中のジョブがある場合は解除できないことがあります。", "등록만 해제합니다. 폴더와 Git 파일은 유지됩니다. 실행 중인 작업이 있으면 해제가 차단될 수 있습니다.", "只取消專案註冊，保留資料夾與 Git 檔案。有執行中的任務時可能無法取消註冊。"],
   unregisterError: ["Unregister was not confirmed. Refresh the inventory before trying again; the Runner may be busy or the registration may have changed.", "尚未确认取消注册成功。请先刷新项目列表；Runner 可能正忙，或注册状态已变化。", "Entfernung nicht bestätigt. Vor einem neuen Versuch die Liste aktualisieren.", "Désinscription non confirmée. Actualisez la liste avant de réessayer.", "登録解除を確認できません。再試行前に一覧を更新してください。", "등록 해제를 확인하지 못했습니다. 다시 시도하기 전에 목록을 새로 고치세요.", "尚未確認取消註冊成功。請先重新整理專案清單；Runner 可能正忙，或註冊狀態已變化。"],
