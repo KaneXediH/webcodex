@@ -1,5 +1,9 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+import { useProduct } from "./product";
+import { useConnectionsTools } from "./connections-tools";
+import { useInstructionsText } from "./instructions";
+import { useShellText } from "./runtime-shell";
 import {
   LOCALE_STORAGE_KEY,
   LANGUAGES,
@@ -26,6 +30,29 @@ function LocaleProbe() {
 }
 
 describe("LocaleProvider", () => {
+  it("uses dedicated Traditional Chinese catalogs throughout Desktop", () => {
+    function TextProbe() {
+      const { t } = useLocale();
+      const p = useProduct();
+      const connections = useConnectionsTools();
+      const instructions = useInstructionsText();
+      const shell = useShellText();
+      return <p>{[
+        t("nav.settings"),
+        p("projects"),
+        p("skills"),
+        connections("autostart"),
+        instructions("save"),
+        shell("Check connection"),
+      ].join(" · ")}</p>;
+    }
+    window.localStorage.setItem(LOCALE_STORAGE_KEY, "zh-TW");
+    render(<LocaleProvider><LocaleProbe /><TextProbe /></LocaleProvider>);
+    expect(screen.getByRole("combobox")).toHaveValue("zh-TW");
+    expect(screen.getByRole("option", { name: "繁體中文" })).toBeInTheDocument();
+    expect(screen.getByText("設定 · 專案 · 技能 · 自動啟動 · 儲存指令 · 檢查連線")).toBeInTheDocument();
+  });
+
   it.each(LANGUAGES)("persists and restores $value", async ({ value }) => {
     const first = render(<LocaleProvider><LocaleProbe /></LocaleProvider>);
     fireEvent.change(screen.getByRole("combobox"), { target: { value } });
