@@ -162,7 +162,7 @@ describe("workspace configuration boundaries", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     api.computerPermissions.mockResolvedValue({ supported: true, foreground: true, execution_process: "WebCodex Runner", execution_path: "/Applications/WebCodex.app/Contents/Resources/webcodex-runner", runner_accessibility: "unknown", runner_screen_recording: "unknown", desktop_accessibility: false, desktop_screen_recording: false });
     fireEvent.focus(window);
-    expect(await screen.findByRole("dialog")).toHaveAccessibleName("Computer Use");
+    expect(await screen.findByRole("dialog")).toHaveAccessibleName("Computer Use permissions");
     expect(api.requestComputerPermission).not.toHaveBeenCalled();
     fireEvent.click(screen.getByRole("button", { name: "Continue · available in Settings" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
