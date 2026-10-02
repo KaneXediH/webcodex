@@ -65,7 +65,7 @@ export function ComputerPermissions({ welcome = false }: { welcome?: boolean }) 
   if (welcome && !showWelcome) return null;
   if (!welcome && permissions && !permissions.supported) return null;
   const content = <>
-    <h2 id={welcome ? "permission-welcome-title" : "permission-settings-title"}>Computer Use</h2>
+    <h2 id={welcome ? "permission-welcome-title" : "permission-settings-title"}>{t("permissions.title")}</h2>
     {permissions?.supported && <>
       <dl className="detail-list permission-execution-owner">
         <div><dt>{p("executionProcess")}</dt><dd>{permissions.execution_process ?? "WebCodex Runner"}</dd></div>
